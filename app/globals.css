@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Fonehouse-style palette from brand (pink hero, dark nav, white retail) */
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-pink: #e4007f;
+  --color-brand-pink-hover: #c2006a;
+  --color-brand-pink-soft: #f472b6;
+  --color-nav-dark: #0f1115;
+  --color-fh-page: #ffffff;
+  --color-fh-trust-bar: #f3f4f6;
+  --color-fh-navy: #0f1115;
+  --color-fh-card: #ffffff;
+  --color-fh-border: #e5e7eb;
+  --color-fh-muted: #6b7280;
+  --color-fh-glow: rgba(228, 0, 127, 0.22);
+
+  /* Legacy aliases — map old tokens to pink / nav */
+  --color-fh-orange: var(--color-brand-pink);
+  --color-fh-orange-hover: var(--color-brand-pink-hover);
+  --color-fh-blue: var(--color-brand-pink);
+  --color-fh-blue-soft: var(--color-brand-pink-soft);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    /* Fixed header: logo + Trustpilot + Uswitch + dark nav */
+    --header-total-height: 6.4rem;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --header-total-height: 6.85rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      /* Extra subline under logos (md+) */
+      --header-total-height: 8.15rem;
+    }
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-pink-200 text-slate-900;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-2xl border border-slate-200/90 bg-white/95 shadow-[0_12px_40px_rgba(15,17,21,0.06)] backdrop-blur-xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-[var(--color-brand-pink)] to-[var(--color-brand-pink-soft)] bg-clip-text text-transparent;
+  }
+
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+      0 0 0 1px rgba(229, 231, 235, 0.95),
+      0 20px 50px -18px var(--color-fh-glow);
+  }
+
+  .fh-card {
+    @apply rounded-2xl border border-slate-200/90 bg-white shadow-sm;
+  }
+}

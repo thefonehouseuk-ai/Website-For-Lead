@@ -1,0 +1,116 @@
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { PHONE_MODELS } from "@/lib/phone-models";
+import { cn } from "@/lib/utils";
+
+type Props = {
+  value: string;
+  onChange: (v: string) => void;
+  onBlur: () => void;
+  error?: string;
+};
+
+export function PhoneModelCombobox({
+  value,
+  onChange,
+  onBlur,
+  error,
+}: Props) {
+  const listId = useId();
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState(value);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setQuery(value);
+  }, [value]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [...PHONE_MODELS];
+    return PHONE_MODELS.filter((m) => m.toLowerCase().includes(q));
+  }, [query]);
+
+  const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) close();
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [close]);
+
+  return (
+    <div ref={rootRef} className="relative">
+      <label className="mb-1.5 block text-xs font-medium text-slate-700">
+        Phone model
+      </label>
+      <motion.input
+        whileFocus={{ scale: 1.005 }}
+        transition={{ type: "spring", stiffness: 400, damping: 28 }}
+        autoComplete="off"
+        role="combobox"
+        aria-expanded={open}
+        aria-controls={listId}
+        aria-autocomplete="list"
+        className={cn(
+          "min-h-12 w-full rounded-xl border bg-white px-4 py-3 text-base text-slate-900 outline-none ring-0 transition-[border,box-shadow] placeholder:text-slate-400 sm:min-h-0 sm:text-sm",
+          error
+            ? "border-rose-400 focus:border-rose-500"
+            : "border-slate-300 focus:border-[var(--color-brand-pink)] focus:shadow-[0_0_0_3px_rgba(228,0,127,0.18)]",
+        )}
+        placeholder="Search e.g. iPhone 15, Galaxy S24…"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          onChange("");
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onBlur={() => {
+          onBlur();
+        }}
+      />
+      <AnimatePresence>
+        {open && filtered.length > 0 ? (
+          <motion.ul
+            id={listId}
+            role="listbox"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.18 }}
+            className="absolute z-40 mt-2 max-h-52 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl"
+          >
+            {filtered.slice(0, 80).map((m) => (
+              <li key={m}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={value === m}
+                  className="flex w-full px-3 py-2.5 text-left text-sm text-slate-800 hover:bg-slate-50"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => {
+                    onChange(m);
+                    setQuery(m);
+                    close();
+                  }}
+                >
+                  {m}
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        ) : null}
+      </AnimatePresence>
+      {error ? (
+        <p className="mt-1.5 text-xs text-rose-600" role="alert">
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
