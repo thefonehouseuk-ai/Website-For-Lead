@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, Smartphone, Tag } from "lucide-react";
 import { TrustpilotStarRating } from "@/components/ui/TrustpilotStarRating";
 
 const TRUSTPILOT_HREF =
@@ -28,7 +29,7 @@ export function SiteHeader() {
             aria-label="Home"
           >
             <Image
-              src="/logo.svg"
+              src="/logo1.svg"
               alt="Sell your phone"
               width={220}
               height={60}
@@ -42,14 +43,9 @@ export function SiteHeader() {
               href={TRUSTPILOT_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex min-w-0 max-w-[58%] flex-col items-end gap-0.5 sm:max-w-none sm:flex-row sm:items-center sm:gap-2"
+              className="group flex min-w-0 max-w-[58%] flex-col items-end gap-1 sm:max-w-none sm:flex-row sm:items-center sm:gap-2"
             >
-              <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-                <TrustpilotStarRating size="sm" />
-                <span className="hidden text-[10px] font-semibold text-slate-600 sm:inline sm:text-xs">
-                  Excellent
-                </span>
-              </div>
+           
               <Image
                 src="/trustpilot.svg"
                 alt="Trustpilot"
@@ -88,16 +84,18 @@ export function SiteHeader() {
       <div className="bg-[var(--color-nav-dark)]">
         <div className="mx-auto flex h-11 max-w-6xl items-center justify-between gap-2 px-3 sm:h-12 sm:gap-3 sm:px-6">
           <nav className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-medium text-white/95 sm:gap-x-4 sm:text-sm">
-            <span className="hidden truncate text-white/70 lg:inline">
+            <span className="hidden items-center gap-1.5 truncate text-white/70 lg:inline-flex">
+              <Smartphone className="h-3.5 w-3.5 shrink-0 text-white/55" aria-hidden />
               Sell your phone
             </span>
-            <span className="shrink-0 rounded bg-[var(--color-brand-pink)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:px-2.5 sm:text-xs">
+            <span className="inline-flex shrink-0 items-center gap-1 rounded bg-[var(--color-brand-pink)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:gap-1.5 sm:px-2.5 sm:text-xs">
+              <Tag className="h-3 w-3 shrink-0 text-white/95 sm:h-3.5 sm:w-3.5" aria-hidden />
               Cash offers
             </span>
           </nav>
           <button
             type="button"
-            className="shrink-0 touch-manipulation rounded-md bg-[var(--color-brand-pink)] px-3 py-2 text-xs font-semibold text-white transition active:scale-[0.98] hover:bg-[var(--color-brand-pink-hover)] sm:px-4 sm:py-2 sm:text-sm"
+            className="inline-flex shrink-0 touch-manipulation items-center gap-1.5 rounded-md bg-[var(--color-brand-pink)] px-3 py-2 text-xs font-semibold text-white transition active:scale-[0.98] hover:bg-[var(--color-brand-pink-hover)] sm:px-4 sm:py-2 sm:text-sm"
             onClick={() =>
               document.getElementById("quote")?.scrollIntoView({
                 behavior: "smooth",
@@ -105,6 +103,7 @@ export function SiteHeader() {
             }
           >
             Get quote
+            <ArrowRight className="h-3.5 w-3.5 opacity-90 sm:h-4 sm:w-4" aria-hidden />
           </button>
         </div>
       </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { MotionSection } from "@/components/ui/MotionSection";
 import { TrustpilotStarRating } from "@/components/ui/TrustpilotStarRating";
 
@@ -20,40 +22,138 @@ const quotes = [
     place: "Bristol",
     text: "Sold a damaged Samsung — still got a fair price. Would use again.",
   },
+  {
+    name: "James T.",
+    place: "Birmingham",
+    text: "Collection slot was on time, driver was professional, money hit my account within hours.",
+  },
+  {
+    name: "Priya M.",
+    place: "Leeds",
+    text: "Clear emails at every step. I knew exactly what to expect before I sent my phone.",
+  },
+  {
+    name: "Oliver H.",
+    place: "Edinburgh",
+    text: "Traded in two old handsets — both graded fairly. Easier than dealing with marketplace timewasters.",
+  },
+  {
+    name: "Hannah W.",
+    place: "Cardiff",
+    text: "Worried about data — they walked me through reset and wipe. Felt safe throughout.",
+  },
+  {
+    name: "Marcus P.",
+    place: "Glasgow",
+    text: "Competitive offer on my Pixel. Whole process from quote to payout was under 48 hours.",
+  },
+  {
+    name: "Emma S.",
+    place: "Newcastle",
+    text: "No haggling after collection. The price they quoted was the price I got. Refreshing.",
+  },
 ] as const;
 
 export function Testimonials() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const updateArrows = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    const edge = 2;
+    setCanPrev(scrollLeft > edge);
+    setCanNext(scrollLeft < scrollWidth - clientWidth - edge);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    updateArrows();
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    const ro = new ResizeObserver(updateArrows);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      ro.disconnect();
+    };
+  }, [updateArrows]);
+
+  const scrollByDir = (dir: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const first = el.querySelector<HTMLElement>("[data-testimonial-card]");
+    const gap = 16;
+    const step = (first?.offsetWidth ?? 300) + gap;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
   return (
     <MotionSection className="mx-auto max-w-6xl px-3 py-10 sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-pink)]">
-          Testimonials
-        </p>
-        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
-          Loved by sellers nationwide
-        </h2>
-      </div>
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-3">
-        {quotes.map((q, i) => (
-          <motion.figure
-            key={q.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.07, duration: 0.5 }}
-            whileHover={{ y: -4 }}
-            className="relative flex h-full flex-col rounded-2xl border border-slate-200/90 bg-[#f2f2f5] p-5 shadow-sm sm:p-6"
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+        <div className="mx-auto max-w-2xl text-center sm:mx-0 sm:max-w-xl sm:text-left">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-pink)]">
+            Testimonials
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
+            Loved by sellers nationwide
+          </h2>
+          <p className="mt-2 text-sm text-slate-600 sm:text-base">
+            Swipe or use the arrows to read more reviews from across the UK.
+          </p>
+        </div>
+        <div className="flex shrink-0 items-center justify-center gap-2 sm:justify-end">
+          <button
+            type="button"
+            onClick={() => scrollByDir(-1)}
+            disabled={!canPrev}
+            aria-label="Show previous testimonials"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-800 shadow-sm transition hover:border-[var(--color-brand-pink)]/40 hover:bg-pink-50/80 hover:text-[var(--color-brand-pink)] disabled:pointer-events-none disabled:opacity-35"
           >
-            <TrustpilotStarRating size="md" className="shrink-0" />
-            <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-800">
-              “{q.text}”
-            </blockquote>
-            <figcaption className="mt-5 border-t border-slate-200/80 pt-4 text-xs text-slate-500">
-              <span className="font-semibold text-slate-900">{q.name}</span> ·{" "}
-              {q.place}
-            </figcaption>
-          </motion.figure>
-        ))}
+            <ChevronLeft className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByDir(1)}
+            disabled={!canNext}
+            aria-label="Show next testimonials"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-800 shadow-sm transition hover:border-[var(--color-brand-pink)]/40 hover:bg-pink-50/80 hover:text-[var(--color-brand-pink)] disabled:pointer-events-none disabled:opacity-35"
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <div
+          ref={scrollerRef}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {quotes.map((q, i) => (
+            <motion.figure
+              key={`${q.name}-${q.place}`}
+              data-testimonial-card
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-5% 0px" }}
+              transition={{ delay: Math.min(i * 0.04, 0.2), duration: 0.45 }}
+              whileHover={{ y: -3 }}
+              className="relative flex w-[min(100%,19rem)] shrink-0 snap-start flex-col rounded-2xl border border-slate-200/90 bg-[#f2f2f5] p-5 shadow-sm sm:w-80 sm:p-6 md:w-[22rem]"
+            >
+              <TrustpilotStarRating size="md" className="shrink-0" />
+              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-800">
+                “{q.text}”
+              </blockquote>
+              <figcaption className="mt-5 border-t border-slate-200/80 pt-4 text-xs text-slate-500">
+                <span className="font-semibold text-slate-900">{q.name}</span> ·{" "}
+                {q.place}
+              </figcaption>
+            </motion.figure>
+          ))}
+        </div>
       </div>
     </MotionSection>
   );

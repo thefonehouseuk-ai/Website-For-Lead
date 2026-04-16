@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Send } from "lucide-react";
 import { Controller } from "react-hook-form";
 import { useLeadForm } from "@/hooks/useLeadForm";
 import { Button } from "@/components/ui/Button";
@@ -180,6 +181,7 @@ export function LeadForm() {
               loading={isSubmitting}
             >
               Get my cash offer
+              <Send className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
             </Button>
             <p className="mt-3 text-xs text-slate-500">
               By submitting, you agree to be contacted about your quote. We

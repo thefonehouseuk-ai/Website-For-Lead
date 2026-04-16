@@ -29,7 +29,7 @@ const sizes = {
     star: "size-[0.65rem] sm:size-2.5",
   },
   md: {
-    box: "size-8 sm:size-9",
+    box: "size-8 sm:size-5",
     gap: "gap-1",
     star: "size-3.5 sm:size-4",
   },

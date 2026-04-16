@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
 import { useExitIntent } from "@/hooks/useExitIntent";
 import { Button } from "@/components/ui/Button";
 
@@ -30,8 +31,16 @@ export function ExitIntentModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 320, damping: 30 }}
-            className="glass-panel glow-ring relative z-10 w-full max-w-md border-slate-200 p-4 shadow-2xl sm:p-6"
+            className="glass-panel glow-ring relative z-10 w-full max-w-md border-slate-200 p-4 pt-12 shadow-2xl sm:p-6 sm:pt-14"
           >
+            <button
+              type="button"
+              onClick={dismiss}
+              className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-800"
+              aria-label="Close dialog"
+            >
+              <X className="h-5 w-5" strokeWidth={2} />
+            </button>
             <h2
               id="exit-title"
               className="text-xl font-semibold tracking-tight text-slate-900"

@@ -1,25 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+import { ShieldCheck, Truck, Zap } from "lucide-react";
 import { MotionSection } from "@/components/ui/MotionSection";
 
-const items = [
+const items: readonly {
+  title: string;
+  body: string;
+  Icon: LucideIcon;
+}[] = [
   {
     title: "Free Pickup",
     body: "Doorstep collection across the UK — no hidden fees, no faff.",
-    icon: "🚚",
+    Icon: Truck,
   },
   {
     title: "Same Day Payment",
     body: "Once your device is verified, we move quickly so you get paid.",
-    icon: "⚡",
+    Icon: Zap,
   },
   {
     title: "Trusted UK Service",
     body: "Clear communication, secure handling, and honest grading.",
-    icon: "🛡️",
+    Icon: ShieldCheck,
   },
-] as const;
+];
 
 export function WhyChooseUs() {
   return (
@@ -37,7 +43,9 @@ export function WhyChooseUs() {
         </p>
       </div>
       <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {items.map((item, i) => (
+        {items.map((item, i) => {
+          const Icon = item.Icon;
+          return (
           <motion.article
             key={item.title}
             initial={{ opacity: 0, y: 18 }}
@@ -46,7 +54,9 @@ export function WhyChooseUs() {
             transition={{ delay: i * 0.08, duration: 0.45 }}
             className="fh-card glow-ring relative overflow-hidden p-6"
           >
-            <div className="text-3xl">{item.icon}</div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--color-brand-pink)]/12 to-pink-100/80 text-[var(--color-brand-pink)] ring-1 ring-[var(--color-brand-pink)]/15">
+              <Icon className="h-6 w-6" strokeWidth={1.65} aria-hidden />
+            </div>
             <h3 className="mt-4 text-lg font-semibold text-slate-900">
               {item.title}
             </h3>
@@ -54,7 +64,8 @@ export function WhyChooseUs() {
               {item.body}
             </p>
           </motion.article>
-        ))}
+          );
+        })}
       </div>
     </MotionSection>
   );

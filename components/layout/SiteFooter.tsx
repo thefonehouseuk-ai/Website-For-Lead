@@ -1,25 +1,122 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink, MessageCircle } from "lucide-react";
+
+const TRUSTPILOT_HREF =
+  process.env.NEXT_PUBLIC_TRUSTPILOT_URL?.trim() ||
+  "https://uk.trustpilot.com";
+const USWITCH_HREF =
+  process.env.NEXT_PUBLIC_USWITCH_URL?.trim() || "https://www.uswitch.com";
+
+const waDigits = process.env.NEXT_PUBLIC_WHATSAPP_E164?.replace(/\D/g, "") ?? "";
+const whatsappHref =
+  waDigits.length >= 10 ? `https://wa.me/${waDigits}` : null;
+
+function Dot() {
+  return (
+    <span className="select-none px-2 text-slate-600" aria-hidden>
+      ·
+    </span>
+  );
+}
+
+const extLinkClass =
+  "inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium text-slate-400 transition hover:bg-white/[0.06] hover:text-slate-200 sm:text-xs";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-800 bg-[var(--color-fh-navy)] py-12 text-slate-300">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p className="text-xs leading-relaxed text-slate-400">
+    <footer className="border-t border-slate-800 bg-[var(--color-fh-navy)] text-slate-400">
+      <div className="mx-auto max-w-6xl px-3 py-6 sm:px-6 sm:py-7">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+          <div className="min-w-0">
+            <Link
+              href="/"
+              className="inline-block w-fit opacity-95 transition hover:opacity-100"
+              aria-label="Sell Your Phone UK — Home"
+            >
+              <Image
+                src="/footer_logo.svg"
+                alt="Sell Your Phone UK"
+                width={560}
+                height={100}
+                className="h-7 w-auto max-w-[min(100%,260px)] object-contain object-left sm:h-8 sm:max-w-[300px]"
+              />
+            </Link>
+            <p className="mt-1.5 max-w-xs text-xs leading-relaxed text-slate-500">
+              Cash quotes · Free nationwide collection · Secure payout
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-10 lg:gap-14">
+            <nav
+              className="flex flex-wrap items-center gap-y-1 text-xs font-medium"
+              aria-label="Footer navigation"
+            >
+              <Link
+                href="/"
+                className="text-slate-300 underline-offset-4 hover:text-white hover:underline"
+              >
+                Home
+              </Link>
+              <Dot />
+              <Link
+                href="/#quote"
+                className="text-slate-300 underline-offset-4 hover:text-white hover:underline"
+              >
+                Get a quote
+              </Link>
+              <Dot />
+              <Link
+                href="/thank-you"
+                className="text-slate-300 underline-offset-4 hover:text-white hover:underline"
+              >
+                After you submit
+              </Link>
+            </nav>
+
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+              <a
+                href={TRUSTPILOT_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={extLinkClass}
+              >
+                Trustpilot
+                <ExternalLink className="h-3 w-3 opacity-70" aria-hidden />
+              </a>
+              <a
+                href={USWITCH_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={extLinkClass}
+              >
+                uSwitch
+                <ExternalLink className="h-3 w-3 opacity-70" aria-hidden />
+              </a>
+              {whatsappHref ? (
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${extLinkClass} text-emerald-400/90 hover:text-emerald-300`}
+                >
+                  <MessageCircle
+                    className="h-3.5 w-3.5"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
+                  WhatsApp
+                  <ExternalLink className="h-3 w-3 opacity-70" aria-hidden />
+                </a>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 border-t border-white/[0.06] pt-4 text-[10px] leading-relaxed text-slate-600 sm:text-[11px]">
           © {new Date().getFullYear()} Sell Your Phone UK. All rights reserved.
-        </p>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs">
-          <Link
-            href="/"
-            className="text-slate-300 transition hover:text-[var(--color-brand-pink-soft)]"
-          >
-            Home
-          </Link>
-          <Link
-            href="/thank-you"
-            className="text-slate-300 transition hover:text-[var(--color-brand-pink-soft)]"
-          >
-            Thank you
-          </Link>
+          UK-only service. Final quotes subject to device inspection. Apple and
+          Samsung are trademarks of their respective owners.
         </div>
       </div>
     </footer>

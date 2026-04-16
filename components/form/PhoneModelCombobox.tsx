@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { PHONE_MODELS } from "@/lib/phone-models";
 import { cn } from "@/lib/utils";
@@ -48,32 +49,42 @@ export function PhoneModelCombobox({
       <label className="mb-1.5 block text-xs font-medium text-slate-700">
         Phone model
       </label>
-      <motion.input
-        whileFocus={{ scale: 1.005 }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}
-        autoComplete="off"
-        role="combobox"
-        aria-expanded={open}
-        aria-controls={listId}
-        aria-autocomplete="list"
-        className={cn(
-          "min-h-12 w-full rounded-xl border bg-white px-4 py-3 text-base text-slate-900 outline-none ring-0 transition-[border,box-shadow] placeholder:text-slate-400 sm:min-h-0 sm:text-sm",
-          error
-            ? "border-rose-400 focus:border-rose-500"
-            : "border-slate-300 focus:border-[var(--color-brand-pink)] focus:shadow-[0_0_0_3px_rgba(228,0,127,0.18)]",
-        )}
-        placeholder="Search e.g. iPhone 15, Galaxy S24…"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          onChange("");
-          setOpen(true);
-        }}
-        onFocus={() => setOpen(true)}
-        onBlur={() => {
-          onBlur();
-        }}
-      />
+      <div className="relative">
+        <motion.input
+          whileFocus={{ scale: 1.005 }}
+          transition={{ type: "spring", stiffness: 400, damping: 28 }}
+          autoComplete="off"
+          role="combobox"
+          aria-expanded={open}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          className={cn(
+            "min-h-12 w-full rounded-xl border bg-white py-3 pl-4 pr-11 text-base text-slate-900 outline-none ring-0 transition-[border,box-shadow] placeholder:text-slate-400 sm:min-h-0 sm:text-sm",
+            error
+              ? "border-rose-400 focus:border-rose-500"
+              : "border-slate-300 focus:border-[var(--color-brand-pink)] focus:shadow-[0_0_0_3px_rgba(228,0,127,0.18)]",
+          )}
+          placeholder="Search e.g. iPhone 15, Galaxy S24…"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            onChange("");
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+          onBlur={() => {
+            onBlur();
+          }}
+        />
+        <ChevronDown
+          className={cn(
+            "pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-transform duration-200",
+            open && "rotate-180",
+          )}
+          strokeWidth={2.25}
+          aria-hidden
+        />
+      </div>
       <AnimatePresence>
         {open && filtered.length > 0 ? (
           <motion.ul

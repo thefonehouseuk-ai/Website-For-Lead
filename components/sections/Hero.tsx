@@ -1,9 +1,15 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  ArrowRight,
+  MapPin,
+  PoundSterling,
+  Star,
+} from "lucide-react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/Button";
-import { HeroFloatingPhones } from "@/components/effects/HeroFloatingPhones";
+import { HeroVisual } from "@/components/effects/HeroVisual";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -68,6 +74,7 @@ export function Hero() {
                 onClick={scrollToQuote}
               >
                 Get Instant Quote
+                <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Button>
               <p className="text-center text-[11px] text-white/80 sm:text-left sm:text-sm">
                 No obligation · Same-day payouts typical
@@ -75,8 +82,8 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="relative order-1 mx-auto h-[min(240px,42vh)] w-full max-w-md sm:h-[min(320px,46vh)] sm:max-w-lg lg:order-2 lg:mx-0 lg:h-[min(440px,56vh)]">
-            <HeroFloatingPhones />
+          <div className="relative order-1 mx-auto flex w-full max-w-lg justify-center lg:order-2 lg:mx-0 lg:max-w-none">
+            <HeroVisual />
           </div>
         </div>
       </div>
@@ -89,20 +96,60 @@ export function Hero() {
           transition={{ duration: 0.45 }}
           className="mx-auto grid max-w-6xl grid-cols-3 gap-2 sm:gap-4"
         >
-          {[
-            ["4.9★", "Rated service"],
-            ["UK", "Nationwide"],
-            ["£0", "Collection fee"],
-          ].map(([k, v]) => (
+          {(
+            [
+              {
+                id: "rated",
+                term: (
+                  <span className="inline-flex items-center justify-center gap-1">
+                    <span>4.9</span>
+                    <Star
+                      className="h-[1.05em] w-[1.05em] fill-amber-400 text-amber-400"
+                      aria-hidden
+                    />
+                  </span>
+                ),
+                desc: "Rated service",
+              },
+              {
+                id: "nationwide",
+                term: (
+                  <span className="inline-flex items-center justify-center gap-1">
+                    <MapPin
+                      className="h-[1em] w-[1em] text-[var(--color-brand-pink)]"
+                      strokeWidth={2.25}
+                      aria-hidden
+                    />
+                    <span>UK</span>
+                  </span>
+                ),
+                desc: "Nationwide",
+              },
+              {
+                id: "fee",
+                term: (
+                  <span className="inline-flex items-center justify-center gap-1">
+                    <PoundSterling
+                      className="h-[1em] w-[1em] text-[var(--color-brand-pink)]"
+                      strokeWidth={2.25}
+                      aria-hidden
+                    />
+                    <span>£0</span>
+                  </span>
+                ),
+                desc: "Collection fee",
+              },
+            ] as const
+          ).map((row) => (
             <div
-              key={v}
+              key={row.id}
               className="fh-card rounded-xl px-2 py-2.5 text-center shadow-sm sm:rounded-2xl sm:px-4 sm:py-3"
             >
               <dt className="text-sm font-bold text-slate-900 sm:text-base lg:text-lg">
-                {k}
+                {row.term}
               </dt>
               <dd className="mt-0.5 text-[9px] leading-tight text-slate-500 sm:text-xs">
-                {v}
+                {row.desc}
               </dd>
             </div>
           ))}

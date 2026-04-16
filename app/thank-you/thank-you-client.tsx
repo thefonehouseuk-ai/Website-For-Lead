@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
@@ -25,7 +26,7 @@ export function ThankYouClient() {
       >
         <div className="mx-auto mb-6 flex justify-center">
           <Image
-            src="/logo.svg"
+            src="/logo1.svg"
             alt="Sell your phone"
             width={200}
             height={54}
@@ -38,23 +39,11 @@ export function ThankYouClient() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.1 }}
         >
-          <svg
-            viewBox="0 0 24 24"
-            className="h-8 w-8 text-emerald-600"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <CheckCircle2
+            className="h-9 w-9 text-emerald-600"
+            strokeWidth={1.65}
             aria-hidden
-          >
-            <motion.path
-              d="M5 13l4 4L19 7"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.45, delay: 0.25, ease: "easeOut" }}
-            />
-          </svg>
+          />
         </motion.div>
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
           Your quote is being prepared
