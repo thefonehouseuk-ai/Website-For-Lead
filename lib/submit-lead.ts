@@ -10,23 +10,23 @@ export class LeadSubmissionError extends Error {
 export async function submitLeadToGoogleScript(
   payload: LeadPayload,
 ): Promise<void> {
-  const url = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-  if (!url?.trim()) {
-    throw new LeadSubmissionError(
-      "Submission URL is not configured. Set NEXT_PUBLIC_GOOGLE_SCRIPT_URL.",
-    );
-  }
-
-  const res = await fetch(url, {
+  const res = await fetch("/api/leads", {
     method: "POST",
-    mode: "cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
   if (!res.ok) {
+    let message = `Could not send your details (${res.status}). Please try again.`;
+    try {
+      const data = (await res.json()) as { message?: string };
+      if (data?.message) message = data.message;
+    } catch {
+      // Keep fallback message when response is not JSON.
+    }
+
     throw new LeadSubmissionError(
-      `Could not send your details (${res.status}). Please try again.`,
+      message,
     );
   }
 }

@@ -8,7 +8,7 @@ import { TrustpilotStarRating } from "@/components/ui/TrustpilotStarRating";
 
 const TRUSTPILOT_HREF =
   process.env.NEXT_PUBLIC_TRUSTPILOT_URL?.trim() ||
-  "https://uk.trustpilot.com";
+  "https://uk.trustpilot.com/review/www.fonehouse.co.uk";
 const USWITCH_HREF =
   process.env.NEXT_PUBLIC_USWITCH_URL?.trim() || "https://www.uswitch.com";
 
@@ -30,7 +30,7 @@ export function SiteHeader() {
           >
             <Image
               src="/logo1.svg"
-              alt="Sell your phone"
+              alt="The Phone House UK"
               width={220}
               height={60}
               className="h-7 w-auto max-w-[min(148px,42vw)] object-contain object-left sm:h-9 sm:max-w-[200px]"
@@ -76,7 +76,7 @@ export function SiteHeader() {
         <p className="mt-1.5 hidden border-t border-slate-100 pt-1.5 text-right text-[11px] leading-snug text-slate-600 md:block md:text-xs">
           <span className="font-semibold text-slate-800">UK service</span>
           <span className="text-slate-400"> · </span>
-          <span className="text-slate-500">Free collection · Fast payout</span>
+          <span className="text-slate-500">Upfront + monthly plans · Trusted support</span>
         </p>
       </div>
 
@@ -86,11 +86,11 @@ export function SiteHeader() {
           <nav className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-medium text-white/95 sm:gap-x-4 sm:text-sm">
             <span className="hidden items-center gap-1.5 truncate text-white/70 lg:inline-flex">
               <Smartphone className="h-3.5 w-3.5 shrink-0 text-white/55" aria-hidden />
-              Sell your phone
+              Buy your phone
             </span>
             <span className="inline-flex shrink-0 items-center gap-1 rounded bg-[var(--color-brand-pink)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:gap-1.5 sm:px-2.5 sm:text-xs">
               <Tag className="h-3 w-3 shrink-0 text-white/95 sm:h-3.5 sm:w-3.5" aria-hidden />
-              Cash offers
+              Contract deals
             </span>
           </nav>
           <button
@@ -102,7 +102,7 @@ export function SiteHeader() {
               })
             }
           >
-            Get quote
+            Check deals
             <ArrowRight className="h-3.5 w-3.5 opacity-90 sm:h-4 sm:w-4" aria-hidden />
           </button>
         </div>

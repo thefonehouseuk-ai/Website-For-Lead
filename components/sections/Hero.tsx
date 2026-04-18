@@ -43,7 +43,7 @@ export function Hero() {
               transition={{ duration: 0.4 }}
               className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 sm:text-xs sm:tracking-[0.2em]"
             >
-              UK-wide phone buying
+              UK-wide phone deals
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 14 }}
@@ -51,7 +51,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.04 }}
               className="mt-2 max-w-2xl text-2xl font-bold leading-[1.12] tracking-tight text-white sm:mt-3 sm:text-4xl sm:leading-[1.08] lg:text-[3.05rem]"
             >
-              Sell Your Phone in the UK – Get Instant Cash
+              Buy Your Phone in the UK - Upfront or Monthly Instalments
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -59,7 +59,7 @@ export function Hero() {
               transition={{ duration: 0.45, delay: 0.1 }}
               className="mt-3 max-w-xl text-sm font-medium leading-snug text-white/90 sm:mt-4 sm:text-lg sm:leading-normal"
             >
-              Free Collection | Fast Payment | Trusted Service
+              Best UK Deals | Flexible Upfront Cost | Trusted Retailer
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -73,11 +73,11 @@ export function Hero() {
                 className="w-full min-h-12 touch-manipulation sm:w-auto sm:min-h-0"
                 onClick={scrollToQuote}
               >
-                Get Instant Quote
+                View Phone Deals
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </Button>
               <p className="text-center text-[11px] text-white/80 sm:text-left sm:text-sm">
-                No obligation · Same-day payouts typical
+                No hidden fees · Flexible payment plans
               </p>
             </motion.div>
           </motion.div>
@@ -137,7 +137,7 @@ export function Hero() {
                     <span>£0</span>
                   </span>
                 ),
-                desc: "Collection fee",
+                desc: "Setup fee",
               },
             ] as const
           ).map((row) => (

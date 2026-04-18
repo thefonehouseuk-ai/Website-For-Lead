@@ -17,33 +17,33 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Sell Your Phone UK | Instant Cash Quotes & Free Collection",
-    template: "%s | Sell Your Phone UK",
+      "The Phone House UK | Upfront + Monthly Phone Deals",
+    template: "%s | The Phone House UK",
   },
   description:
-    "Sell your iPhone or Samsung in the UK with free doorstep collection, fast secure payment, and a trusted buying process. Get your instant cash quote today.",
+    "Buy your next iPhone or Samsung in the UK with flexible upfront cost and monthly instalment plans from a trusted retailer.",
   keywords: [
-    "sell phone UK",
-    "sell iPhone UK",
-    "trade in phone",
-    "cash for phones",
-    "Samsung sell UK",
-    "free phone collection",
+    "buy phone UK",
+    "iPhone deals UK",
+    "Samsung deals UK",
+    "monthly instalment phones",
+    "phone contract deals",
+    "upfront phone cost UK",
   ],
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: siteUrl,
-    siteName: "Sell Your Phone UK",
-    title: "Sell Your Phone UK | Instant Cash & Free Collection",
+    siteName: "The Phone House UK",
+    title: "The Phone House UK | Upfront + Monthly Phone Deals",
     description:
-      "Free UK collection, fast payment, and a premium selling experience for iPhone and Samsung devices.",
+      "Flexible upfront and monthly plans with trusted UK support for iPhone and Samsung devices.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sell Your Phone UK | Instant Cash & Free Collection",
+    title: "The Phone House UK | Upfront + Monthly Phone Deals",
     description:
-      "Free UK collection, fast payment, and a premium selling experience for iPhone and Samsung devices.",
+      "Flexible upfront and monthly plans with trusted UK support for iPhone and Samsung devices.",
   },
   robots: { index: true, follow: true },
 };

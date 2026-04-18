@@ -11,18 +11,18 @@ const items: readonly {
   Icon: LucideIcon;
 }[] = [
   {
-    title: "Free Pickup",
-    body: "Doorstep collection across the UK — no hidden fees, no faff.",
+    title: "Flexible Upfront Options",
+    body: "Choose an upfront amount that works for your budget.",
     Icon: Truck,
   },
   {
-    title: "Same Day Payment",
-    body: "Once your device is verified, we move quickly so you get paid.",
+    title: "Monthly Instalments",
+    body: "Spread the cost with clear monthly plans and no surprises.",
     Icon: Zap,
   },
   {
-    title: "Trusted UK Service",
-    body: "Clear communication, secure handling, and honest grading.",
+    title: "Trusted UK Retailer",
+    body: "Transparent advice, reliable support, and genuine devices.",
     Icon: ShieldCheck,
   },
 ];
@@ -35,11 +35,11 @@ export function WhyChooseUs() {
           Why choose us
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
-          Built around trust, speed, and clarity
+          Built around value, flexibility, and trust
         </h2>
         <p className="mt-3 text-sm text-slate-600 sm:text-base">
-          We make selling your phone feel effortless — from quote to cash in
-          your account.
+          We make buying your next phone simple - from selecting a model to
+          choosing the right payment plan.
         </p>
       </div>
       <div className="mt-10 grid gap-5 md:grid-cols-3">

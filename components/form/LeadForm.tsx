@@ -38,14 +38,14 @@ export function LeadForm() {
 
       <div className="relative">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-brand-pink)]">
-          Instant quote
+          Deal enquiry
         </p>
         <h2 className="mt-2 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl md:text-3xl">
-          Tell us about your device
+          Tell us what phone deal you need
         </h2>
         <p className="mt-2 max-w-xl text-sm text-slate-600">
-          Complete the form — our UK team will confirm your price and arrange
-          free collection at a time that suits you.
+          Complete the form - our UK team will share the best upfront and
+          monthly options that match your needs.
         </p>
 
         <form
@@ -129,14 +129,14 @@ export function LeadForm() {
 
           <div className="sm:col-span-2">
             <span className="mb-2 block text-xs font-medium text-slate-700">
-              Condition
+              Preferred device type
             </span>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
               {(
                 [
-                  { id: "new", label: "New / sealed" },
-                  { id: "used", label: "Used / good" },
-                  { id: "broken", label: "Damaged" },
+                  { id: "new", label: "Brand new" },
+                  { id: "used", label: "Refurbished / like new" },
+                  { id: "broken", label: "Budget-friendly options" },
                 ] as const
               ).map((opt) => (
                 <label
@@ -180,11 +180,11 @@ export function LeadForm() {
               className="min-h-12 w-full touch-manipulation sm:min-h-0 sm:w-auto"
               loading={isSubmitting}
             >
-              Get my cash offer
+              Get my best deal
               <Send className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
             </Button>
             <p className="mt-3 text-xs text-slate-500">
-              By submitting, you agree to be contacted about your quote. We
+              By submitting, you agree to be contacted about available deals. We
               never sell your data.
             </p>
           </div>

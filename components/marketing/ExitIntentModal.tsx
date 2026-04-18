@@ -45,11 +45,11 @@ export function ExitIntentModal() {
               id="exit-title"
               className="text-xl font-semibold tracking-tight text-slate-900"
             >
-              Wait — grab your quote first
+              Wait - check your best deal first
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              Get a no-obligation cash offer in minutes. Free UK collection when
-              you are ready to sell.
+              Get the latest upfront and monthly options in minutes from our UK
+              team.
             </p>
             <div className="mt-5 flex flex-col gap-2 sm:mt-6 sm:flex-row">
               <Button
@@ -62,7 +62,7 @@ export function ExitIntentModal() {
                   });
                 }}
               >
-                Get Instant Quote
+                Check Deals Now
               </Button>
               <Button
                 type="button"

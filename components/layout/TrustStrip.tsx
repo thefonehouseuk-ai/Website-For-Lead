@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const items = [
-  { label: "Free UK collection" },
-  { label: "Fast secure payment" },
+  { label: "UK-wide delivery" },
+  { label: "Upfront + monthly plans" },
   { label: "Trusted UK service" },
 ] as const;
 

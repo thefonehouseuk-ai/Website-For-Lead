@@ -1,16 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, MessageCircle } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const TRUSTPILOT_HREF =
   process.env.NEXT_PUBLIC_TRUSTPILOT_URL?.trim() ||
   "https://uk.trustpilot.com";
 const USWITCH_HREF =
   process.env.NEXT_PUBLIC_USWITCH_URL?.trim() || "https://www.uswitch.com";
-
-const waDigits = process.env.NEXT_PUBLIC_WHATSAPP_E164?.replace(/\D/g, "") ?? "";
-const whatsappHref =
-  waDigits.length >= 10 ? `https://wa.me/${waDigits}` : null;
 
 function Dot() {
   return (
@@ -32,18 +28,18 @@ export function SiteFooter() {
             <Link
               href="/"
               className="inline-block w-fit opacity-95 transition hover:opacity-100"
-              aria-label="Sell Your Phone UK — Home"
+              aria-label="The Phone House UK - Home"
             >
               <Image
                 src="/footer_logo.svg"
-                alt="Sell Your Phone UK"
+                alt="The Phone House UK"
                 width={560}
                 height={100}
                 className="h-7 w-auto max-w-[min(100%,260px)] object-contain object-left sm:h-8 sm:max-w-[300px]"
               />
             </Link>
             <p className="mt-1.5 max-w-xs text-xs leading-relaxed text-slate-500">
-              Cash quotes · Free nationwide collection · Secure payout
+              Great phone deals · Upfront + instalment options · Secure checkout
             </p>
           </div>
 
@@ -63,7 +59,7 @@ export function SiteFooter() {
                 href="/#quote"
                 className="text-slate-300 underline-offset-4 hover:text-white hover:underline"
               >
-                Get a quote
+                Check deals
               </Link>
               <Dot />
               <Link
@@ -93,29 +89,13 @@ export function SiteFooter() {
                 uSwitch
                 <ExternalLink className="h-3 w-3 opacity-70" aria-hidden />
               </a>
-              {whatsappHref ? (
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${extLinkClass} text-emerald-400/90 hover:text-emerald-300`}
-                >
-                  <MessageCircle
-                    className="h-3.5 w-3.5"
-                    strokeWidth={2}
-                    aria-hidden
-                  />
-                  WhatsApp
-                  <ExternalLink className="h-3 w-3 opacity-70" aria-hidden />
-                </a>
-              ) : null}
             </div>
           </div>
         </div>
 
         <div className="mt-6 border-t border-white/[0.06] pt-4 text-[10px] leading-relaxed text-slate-600 sm:text-[11px]">
-          © {new Date().getFullYear()} Sell Your Phone UK. All rights reserved.
-          UK-only service. Final quotes subject to device inspection. Apple and
+          © {new Date().getFullYear()} The Phone House UK. All rights reserved.
+          UK-only service. Deal availability is subject to network and stock. Apple and
           Samsung are trademarks of their respective owners.
         </div>
       </div>

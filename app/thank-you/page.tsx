@@ -6,7 +6,7 @@ import { ThankYouClient } from "./thank-you-client";
 export const metadata: Metadata = {
   title: "Thank you",
   description:
-    "Your quote is being prepared. Our UK team will contact you shortly.",
+    "Your deal request has been received. Our UK team will contact you shortly.",
   robots: { index: false, follow: true },
 };
 

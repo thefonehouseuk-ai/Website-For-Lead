@@ -6,9 +6,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 
-const wa =
-  process.env.NEXT_PUBLIC_WHATSAPP_E164?.replace(/\D/g, "") || "441234567890";
-
 export function ThankYouClient() {
   const router = useRouter();
 
@@ -27,7 +24,7 @@ export function ThankYouClient() {
         <div className="mx-auto mb-6 flex justify-center">
           <Image
             src="/logo1.svg"
-            alt="Sell your phone"
+            alt="The Phone House UK"
             width={200}
             height={54}
             className="h-8 w-auto object-contain"
@@ -46,23 +43,13 @@ export function ThankYouClient() {
           />
         </motion.div>
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-          Your quote is being prepared
+          Your deal request is being prepared
         </h1>
         <p className="mt-3 text-sm text-slate-600 sm:text-base">
-          We will contact you shortly with your personalised offer. Keep an eye
-          on your inbox and phone.
+          We will contact you shortly with suitable upfront and monthly options.
+          Keep an eye on your inbox and phone.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <Button
-            type="button"
-            variant="whatsapp"
-            className="w-full sm:w-auto"
-            onClick={() => {
-              window.open(`https://wa.me/${wa}`, "_blank", "noopener,noreferrer");
-            }}
-          >
-            Message us on WhatsApp
-          </Button>
           <Button
             type="button"
             variant="ghost"

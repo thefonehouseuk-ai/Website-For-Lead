@@ -10,47 +10,47 @@ const quotes = [
   {
     name: "Sarah L.",
     place: "Manchester",
-    text: "Straightforward from start to finish. Paid the same day they collected my iPhone.",
+    text: "Great deal on my new iPhone. The upfront and monthly breakdown was crystal clear.",
   },
   {
     name: "Daniel K.",
     place: "London",
-    text: "Best quote I received in the UK. Polite team and zero pressure.",
+    text: "Best contract deal I found in the UK. Helpful team and zero pressure.",
   },
   {
     name: "Amelia R.",
     place: "Bristol",
-    text: "Sold a damaged Samsung — still got a fair price. Would use again.",
+    text: "I picked a Samsung with a small upfront cost and the process was smooth.",
   },
   {
     name: "James T.",
     place: "Birmingham",
-    text: "Collection slot was on time, driver was professional, money hit my account within hours.",
+    text: "Order arrived on time and setup support was brilliant from start to finish.",
   },
   {
     name: "Priya M.",
     place: "Leeds",
-    text: "Clear emails at every step. I knew exactly what to expect before I sent my phone.",
+    text: "Clear updates at every step. I knew exactly what I was paying each month.",
   },
   {
     name: "Oliver H.",
     place: "Edinburgh",
-    text: "Traded in two old handsets — both graded fairly. Easier than dealing with marketplace timewasters.",
+    text: "Upgraded both our family phones on one plan. Much easier than comparing dozens of sites.",
   },
   {
     name: "Hannah W.",
     place: "Cardiff",
-    text: "Worried about data — they walked me through reset and wipe. Felt safe throughout.",
+    text: "I had questions about network coverage and they guided me to the right deal.",
   },
   {
     name: "Marcus P.",
     place: "Glasgow",
-    text: "Competitive offer on my Pixel. Whole process from quote to payout was under 48 hours.",
+    text: "Competitive Pixel deal with fair monthly payments. Everything was sorted quickly.",
   },
   {
     name: "Emma S.",
     place: "Newcastle",
-    text: "No haggling after collection. The price they quoted was the price I got. Refreshing.",
+    text: "No hidden extras. The deal shown online matched exactly what I paid.",
   },
 ] as const;
 
@@ -98,7 +98,7 @@ export function Testimonials() {
             Testimonials
           </p>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
-            Loved by sellers nationwide
+            Loved by buyers nationwide
           </h2>
           <p className="mt-2 text-sm text-slate-600 sm:text-base">
             Swipe or use the arrows to read more reviews from across the UK.

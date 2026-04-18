@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-/** Lightweight hero art (no WebGL) — phones + £ cash motif on brand pink */
+/** Lightweight hero art (no WebGL) — phones + deals motif on brand pink */
 export function HeroVisual() {
   const reduceMotion = useReducedMotion();
 
@@ -69,9 +69,9 @@ export function HeroVisual() {
                   £
                 </span>
                 <span className="mt-1 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/90 sm:text-[11px]">
-                  Instant
+                  Monthly
                   <br />
-                  cash
+                  plans
                 </span>
               </div>
               <div className="absolute bottom-2 left-1/2 h-1 w-10 -translate-x-1/2 rounded-full bg-white/35 sm:bottom-2.5 sm:w-12" />
@@ -84,7 +84,7 @@ export function HeroVisual() {
             animate={reduceMotion ? false : { opacity: 1, scale: 1 }}
             transition={{ delay: 0.35, duration: 0.4 }}
           >
-            Paid today
+            Flexible terms
           </motion.div>
 
           <motion.div
@@ -93,7 +93,7 @@ export function HeroVisual() {
             animate={reduceMotion ? false : { opacity: 1, x: 0 }}
             transition={{ delay: 0.45, duration: 0.4 }}
           >
-            Free UK pickup
+            UK-wide delivery
           </motion.div>
         </motion.div>
       </motion.div>

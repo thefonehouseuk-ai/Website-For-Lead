@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 type Props = Omit<HTMLMotionProps<"button">, "children"> & {
   children: ReactNode;
-  variant?: "primary" | "ghost" | "whatsapp" | "inverse";
+  variant?: "primary" | "ghost" | "inverse";
   loading?: boolean;
 };
 
@@ -28,8 +28,6 @@ export function Button({
       "border-0 bg-white text-[var(--color-brand-pink)] shadow-md hover:bg-white/95 hover:shadow-lg",
     ghost:
       "border border-slate-300 bg-white text-slate-800 shadow-none hover:border-slate-400 hover:bg-slate-50",
-    whatsapp:
-      "border-0 bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md hover:shadow-lg",
   }[variant];
 
   const spinnerLight = variant === "ghost" || variant === "inverse";

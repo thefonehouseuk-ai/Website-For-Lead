@@ -1,13 +1,13 @@
-# Sell Your Phone UK — Lead Generation Web App
+# The Phone House UK — Lead Generation Web App
 
-Premium, animated marketing site for a UK “sell your phone” business. Built with **Next.js 16.2.4** (App Router), **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and **React Three Fiber** (lazy-loaded 3D hero).
+Premium, animated marketing site for a UK phone deals business. Built with **Next.js 16.2.4** (App Router), **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and **React Three Fiber** (lazy-loaded 3D hero).
 
 ## Features
 
 - Conversion-focused landing page with glassmorphism lead form
 - POST to **Google Apps Script** → Google Sheet
 - **Meta Pixel** (`PageView` on navigation, `Lead` on successful submit)
-- Thank-you page with animated checkmark and **WhatsApp** CTA
+- Thank-you page with animated checkmark
 - Mobile **sticky CTA** and optional **exit-intent** modal
 - SEO metadata + Open Graph (UK-focused)
 
@@ -29,7 +29,6 @@ Open [http://localhost:3000](http://localhost:3000).
 | `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` | **Yes** (for live submits) | Web app URL from Google Apps Script |
 | `NEXT_PUBLIC_META_PIXEL_ID` | No | Meta Pixel ID (digits only) |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical URL for Open Graph (your Vercel URL) |
-| `NEXT_PUBLIC_WHATSAPP_E164` | Recommended | WhatsApp number in E.164 **without** `+`, e.g. `447700900123` |
 
 **Where to add the webhook URL:** create `.env.local` in the project root and set `NEXT_PUBLIC_GOOGLE_SCRIPT_URL=...`. The same file is used on Vercel under **Settings → Environment Variables**.
 
