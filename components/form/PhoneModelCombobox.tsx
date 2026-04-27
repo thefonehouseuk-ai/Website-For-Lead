@@ -33,6 +33,12 @@ export function PhoneModelCombobox({
     if (!q) return [...PHONE_MODELS];
     return PHONE_MODELS.filter((m) => m.toLowerCase().includes(q));
   }, [query]);
+  const hasExactMatch = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return false;
+    return PHONE_MODELS.some((m) => m.toLowerCase() === q);
+  }, [query]);
+  const showCustomOption = query.trim().length > 0 && !hasExactMatch;
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -67,8 +73,9 @@ export function PhoneModelCombobox({
           placeholder="Search e.g. iPhone 15, Galaxy S24…"
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
-            onChange("");
+            const nextValue = e.target.value;
+            setQuery(nextValue);
+            onChange(nextValue);
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
@@ -86,7 +93,7 @@ export function PhoneModelCombobox({
         />
       </div>
       <AnimatePresence>
-        {open && filtered.length > 0 ? (
+        {open && (filtered.length > 0 || showCustomOption) ? (
           <motion.ul
             id={listId}
             role="listbox"
@@ -96,6 +103,25 @@ export function PhoneModelCombobox({
             transition={{ duration: 0.18 }}
             className="absolute z-40 mt-2 max-h-52 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl"
           >
+            {showCustomOption ? (
+              <li>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={value.trim().toLowerCase() === query.trim().toLowerCase()}
+                  className="flex w-full border-b border-slate-100 px-3 py-2.5 text-left text-sm font-medium text-[var(--color-brand-pink)] hover:bg-pink-50"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => {
+                    const selected = query.trim();
+                    onChange(selected);
+                    setQuery(selected);
+                    close();
+                  }}
+                >
+                  Use custom model: {query.trim()}
+                </button>
+              </li>
+            ) : null}
             {filtered.slice(0, 80).map((m) => (
               <li key={m}>
                 <button

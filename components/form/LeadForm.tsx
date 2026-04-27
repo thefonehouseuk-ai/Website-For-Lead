@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
+import Link from "next/link";
 import { Controller } from "react-hook-form";
 import { useLeadForm } from "@/hooks/useLeadForm";
 import { Button } from "@/components/ui/Button";
@@ -185,7 +186,14 @@ export function LeadForm() {
             </Button>
             <p className="mt-3 text-xs text-slate-500">
               By submitting, you agree to be contacted about available deals. We
-              never sell your data.
+              never sell your data. Read our{" "}
+              <Link
+                href="/privacy-policy"
+                className="font-medium text-[var(--color-brand-pink)] hover:underline"
+              >
+                Privacy Policy
+              </Link>
+              .
             </p>
           </div>
         </form>

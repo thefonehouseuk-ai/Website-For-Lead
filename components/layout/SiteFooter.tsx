@@ -68,6 +68,13 @@ export function SiteFooter() {
               >
                 After you submit
               </Link>
+              <Dot />
+              <Link
+                href="/privacy-policy"
+                className="text-slate-300 underline-offset-4 hover:text-white hover:underline"
+              >
+                Privacy Policy
+              </Link>
             </nav>
 
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
