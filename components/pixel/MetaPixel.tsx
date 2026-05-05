@@ -5,7 +5,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, Suspense } from "react";
 import { trackMetaPageView } from "@/lib/meta-pixel";
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim();
+const PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() || "1227394948960539";
 
 function PageViewTracker() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export function MetaPixel() {
 
   return (
     <>
-      <Script id="meta-pixel" strategy="lazyOnload">
+      <Script id="meta-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;

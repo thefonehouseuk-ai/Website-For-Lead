@@ -12,13 +12,18 @@ const font = Plus_Jakarta_Sans({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://sell-your-phone-uk.vercel.app";
+const siteTitle =
+  process.env.NEXT_PUBLIC_SITE_TITLE?.trim() ||
+  "The Phone House UK | Upfront + Monthly Phone Deals";
+const siteTitleTemplate =
+  process.env.NEXT_PUBLIC_SITE_TITLE_TEMPLATE?.trim() ||
+  "%s | The Phone House UK";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "The Phone House UK | Upfront + Monthly Phone Deals",
-    template: "%s | The Phone House UK",
+    default: siteTitle,
+    template: siteTitleTemplate,
   },
   description:
     "Buy your next iPhone or Samsung in the UK with flexible upfront cost and monthly instalment plans from a trusted retailer.",
@@ -35,13 +40,13 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: siteUrl,
     siteName: "The Phone House UK",
-    title: "The Phone House UK | Upfront + Monthly Phone Deals",
+    title: siteTitle,
     description:
       "Flexible upfront and monthly plans with trusted UK support for iPhone and Samsung devices.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Phone House UK | Upfront + Monthly Phone Deals",
+    title: siteTitle,
     description:
       "Flexible upfront and monthly plans with trusted UK support for iPhone and Samsung devices.",
   },
