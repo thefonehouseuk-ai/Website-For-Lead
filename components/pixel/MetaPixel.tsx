@@ -48,6 +48,8 @@ export function MetaPixel() {
       </Script>
       {PIXEL_IDS.map((id) => (
         <noscript key={id}>
+          {/* Meta Pixel noscript fallback requires raw img beacon */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             height="1"
             width="1"
