@@ -28,11 +28,11 @@ export function SiteFooter() {
             <Link
               href="/"
               className="inline-block w-fit opacity-95 transition hover:opacity-100"
-              aria-label="The Phone House UK - Home"
+              aria-label="The Fonehouse UK - Home"
             >
               <Image
                 src="/footer_logo.svg"
-                alt="The Phone House UK"
+                alt="The Fonehouse UK"
                 width={560}
                 height={100}
                 className="h-7 w-auto max-w-[min(100%,260px)] object-contain object-left sm:h-8 sm:max-w-[300px]"
@@ -101,7 +101,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-6 border-t border-white/[0.06] pt-4 text-[10px] leading-relaxed text-slate-600 sm:text-[11px]">
-          © {new Date().getFullYear()} The Phone House UK. All rights reserved.
+          © {new Date().getFullYear()} The Fonehouse UK. All rights reserved.
           UK-only service. Deal availability is subject to network and stock. Apple and
           Samsung are trademarks of their respective owners.
         </div>

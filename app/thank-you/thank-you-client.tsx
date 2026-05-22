@@ -24,7 +24,7 @@ export function ThankYouClient() {
         <div className="mx-auto mb-6 flex justify-center">
           <Image
             src="/logo1.svg"
-            alt="The Phone House UK"
+            alt="The Fonehouse UK"
             width={200}
             height={54}
             className="h-8 w-auto object-contain"

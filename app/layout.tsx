@@ -14,10 +14,10 @@ const siteUrl =
   "https://sell-your-phone-uk.vercel.app";
 const siteTitle =
   process.env.NEXT_PUBLIC_SITE_TITLE?.trim() ||
-  "The Phone House UK | Upfront + Monthly Phone Deals";
+  "The Fonehouse UK | Upfront + Monthly Phone Deals";
 const siteTitleTemplate =
   process.env.NEXT_PUBLIC_SITE_TITLE_TEMPLATE?.trim() ||
-  "%s | The Phone House UK";
+  "%s | The Fonehouse UK";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: siteUrl,
-    siteName: "The Phone House UK",
+    siteName: "The Fonehouse UK",
     title: siteTitle,
     description:
       "Flexible upfront and monthly plans with trusted UK support for iPhone and Samsung devices.",

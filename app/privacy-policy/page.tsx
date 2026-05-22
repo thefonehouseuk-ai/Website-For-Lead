@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How The Phone House UK collects, uses, stores, and protects personal data in line with UK data protection standards.",
+    "How The Fonehouse UK collects, uses, stores, and protects personal data in line with UK data protection standards.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
             Last updated: 27 April 2026
           </p>
           <p className="mt-6 text-sm leading-relaxed text-slate-700">
-            This Privacy Policy explains how The Phone House UK collects and
+            This Privacy Policy explains how The Fonehouse UK collects and
             processes personal data when you use our website and submit a deal
             enquiry. We are committed to handling personal data responsibly and
             in line with UK data protection law, including the UK GDPR and the

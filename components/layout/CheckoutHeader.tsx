@@ -9,11 +9,11 @@ export function CheckoutHeader() {
         <Link
           href="/"
           className="inline-flex items-center"
-          aria-label="The Phone House UK - Home"
+          aria-label="The Fonehouse UK - Home"
         >
           <Image
             src="/logo1.svg"
-            alt="The Phone House UK"
+            alt="The Fonehouse UK"
             width={220}
             height={60}
             className="h-8 w-auto object-contain"

@@ -30,7 +30,7 @@ export function SiteHeader() {
           >
             <Image
               src="/logo1.svg"
-              alt="The Phone House UK"
+              alt="The Fonehouse UK"
               width={220}
               height={60}
               className="h-7 w-auto max-w-[min(148px,42vw)] object-contain object-left sm:h-9 sm:max-w-[200px]"
